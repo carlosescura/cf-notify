@@ -8,17 +8,24 @@ fi
 
 if [ $# -lt 1 ]
 then
-    echo "usage: $0 <CHANNEL> <WEBHOOK> <AWS_PROFILE>"
+    echo "usage: $0 <CHANNEL> <BOT_NAME> <WEBHOOK> <AWS_PROFILE>"
     exit 1
 fi
 
 CHANNEL=$1
-WEBHOOK=$2
-PROFILE=$3
+BOT_NAME=$2
+WEBHOOK=$3
+PROFILE=$4
 
 if [ -z $CHANNEL ];
 then
     echo "Please specify a Slack Channel e.g #general or @me";
+    exit 1
+fi
+
+if [ -z $BOT_NAME ];
+then
+    echo "Please specify bot name";
     exit 1
 fi
 
@@ -61,6 +68,7 @@ if [ ! -f slack.py ]; then
     cat > slack.py <<EOL
 WEBHOOK='$WEBHOOK'
 CHANNEL='$CHANNEL'
+BOT_NAME='$BOT_NAME'
 CUSTOM_CHANNELS={}
 EOL
 fi

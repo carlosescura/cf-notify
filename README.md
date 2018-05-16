@@ -35,11 +35,12 @@ You can create an incoming webhook [here](https://my.slack.com/services/new/inco
 This is done using the script [deploy.sh](./deploy.sh).
 
 ```sh
-./deploy.sh $CHANNEL $WEBHOOK $AWS_PROFILE
+./deploy.sh $CHANNEL $BOT_NAME $WEBHOOK $AWS_PROFILE
 ```
 
 Where:
  - CHANNEL is the Slack channel or user to send messages to. It will be used in the naming of the Lambda artifact file stored in S3.
+ - BOT_NAME is the name of the bot that will be shown in your channel
  - WEBHOOK is the Web Hook URL of an Incoming Web Hook (see https://api.slack.com/incoming-webhooks).
  - AWS_PROFILE is the aws cli profile you want to use for deploy. Default profile is "default"
 

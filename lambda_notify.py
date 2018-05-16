@@ -67,8 +67,7 @@ def get_stack_update_message(cf_message):
     stack_url = get_stack_url(cf_message['StackId'])
 
     message = {
-        'icon_emoji': ':cloud:',
-        'username': 'cf-bot',
+        'username': slack.BOT_NAME if hasattr(slack, 'BOT_NAME' ) else 'AWS-BOT',
         'text': 'Stack: {stack} has entered status: {status} <{link}|(view in web console)>'.format(
                 stack=cf_message['StackName'], status=cf_message['ResourceStatus'], link=stack_url),
         'attachments': attachments
